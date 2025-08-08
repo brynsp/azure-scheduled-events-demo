@@ -229,13 +229,6 @@ Enhance tracking by adding these ServiceNow fields:
 - `u_event_count` - Number of events processed
 - `u_automation_success` - Success flag
 
-### Reporting Benefits
-
-- **Automation metrics** - Track automation success rates
-- **Impact reduction** - Measure time savings from early ACK
-- **Audit trail** - Document all automated actions
-- **Trend analysis** - Identify patterns in scheduled events
-
 ## Monitoring and Alerting
 
 The scripts provide detailed output for monitoring:
@@ -261,7 +254,7 @@ Drain hooks:   Success
 Early acknowledgment:   Success  
 ServiceNow record:   Success
 
-🎉 Automation completed successfully! Impact window shortened.
+Automation completed successfully! Impact window shortened.
 ```
 
 ## Safety Features
@@ -283,54 +276,3 @@ ServiceNow record:   Success
 - **Check required settings** at startup
 - **Graceful degradation** for missing optional components
 - **Clear error messages** for configuration issues
-
-## Production Deployment
-
-### Pre-Deployment Checklist
-
-- [ ] Test all drain hooks in development environment
-- [ ] Verify IMDS connectivity from target VMs
-- [ ] Configure ServiceNow credentials and permissions
-- [ ] Run in dry-run mode on production VMs
-- [ ] Set up monitoring for automation success/failure
-- [ ] Document rollback procedures
-
-### Deployment Steps
-
-1. **Deploy in dry-run mode** to all VMs
-2. **Monitor for several days** to verify event detection
-3. **Test drain hooks** during planned maintenance windows
-4. **Enable production mode** for pilot group of VMs
-5. **Gradually roll out** to remaining VMs
-6. **Monitor automation success rates** and adjust as needed
-
-### Operational Considerations
-
-- **Monitor automation success rates** via ServiceNow reporting
-- **Review failed automation attempts** regularly
-- **Update drain hooks** as applications change
-- **Test recovery procedures** periodically
-- **Maintain documentation** of custom implementations
-
-## Troubleshooting
-
-### Drain Hook Failures
-
-- Check application logs for shutdown errors
-- Verify permissions for automation operations
-- Test hooks individually in isolation
-- Review timeout settings
-
-### Early ACK Failures
-
-- Verify IMDS connectivity (169.254.169.254)
-- Check for network security restrictions
-- Ensure proper event ID formatting
-- Review Azure service health
-
-### ServiceNow Integration Issues
-
-- Verify credentials and permissions
-- Check ServiceNow instance accessibility
-- Validate custom field configurations
-- Review API rate limits

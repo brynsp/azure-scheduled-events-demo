@@ -218,8 +218,14 @@ Add Windows Event Log support to your scripts:
 New-EventLog -LogName Application -Source "AzureScheduledEvents"
 
 # Log events in script
+
+# INFO
 Write-EventLog -LogName Application -Source "AzureScheduledEvents" -EventId 1001 -EntryType Information -Message "Azure Scheduled Events monitoring started"
+
+# WARN
 Write-EventLog -LogName Application -Source "AzureScheduledEvents" -EventId 2001 -EntryType Warning -Message "Scheduled event detected: $($event.EventType)"
+
+# ERROR
 Write-EventLog -LogName Application -Source "AzureScheduledEvents" -EventId 3001 -EntryType Error -Message "Failed to process event: $($_.Exception.Message)"
 ```
 
@@ -249,86 +255,6 @@ Write-LogMessage "Event detected: $($event.EventType)" "WARN"
 Write-LogMessage "Error processing event: $($_.Exception.Message)" "ERROR"
 ```
 
-### Performance Monitoring
-
-```powershell
-# Monitor service resources
-Get-Process | Where-Object {$_.ProcessName -eq "powershell" -and $_.Modules.ModuleName -contains "windows_monitor.ps1"}
-
-# Monitor service memory usage
-Get-Counter "\Process(powershell*)\Working Set - Private"
-
-# Check service status
-Get-Service "AzureScheduledEvents" | Select-Object Name, Status, StartType
-```
-
-## Troubleshooting
-
-### Common Issues
-
-#### 1. IMDS Connectivity Issues
-
-```powershell
-# Test with detailed output
-try {
-    $response = Invoke-WebRequest -Uri "http://169.254.169.254/metadata/scheduledevents?api-version=2020-07-01" -Headers @{"Metadata"="true"} -UseBasicParsing -TimeoutSec 10
-    Write-Host "Status: $($response.StatusCode)" -ForegroundColor Green
-    Write-Host "Response: $($response.Content)" -ForegroundColor Gray
-} catch {
-    Write-Host "Error: $($_.Exception.Message)" -ForegroundColor Red
-    Write-Host "Response: $($_.Exception.Response)" -ForegroundColor Red
-}
-
-# Test network route
-Test-NetConnection -ComputerName 169.254.169.254 -Port 80 -InformationLevel Detailed
-
-# Check proxy settings
-netsh winhttp show proxy
-```
-
-#### 2. PowerShell Execution Issues
-
-```powershell
-# Check execution policy
-Get-ExecutionPolicy -List
-
-# Test script syntax
-powershell.exe -NoProfile -Syntax -File "C:\AzureEvents\scenarios\scenario1_logic_app\windows_monitor.ps1"
-
-# Run with verbose output
-.\windows_monitor.ps1 -Verbose -Debug
-```
-
-#### 3. Service Issues
-
-```powershell
-# Check service configuration
-nssm dump "AzureScheduledEvents"
-
-# View service logs
-Get-Content "C:\AzureEvents\logs\stdout.log" -Tail 20
-Get-Content "C:\AzureEvents\logs\stderr.log" -Tail 20
-
-# Check Event Log
-Get-EventLog -LogName Application -Source "AzureScheduledEvents" -Newest 10
-
-# Restart service
-Restart-Service "AzureScheduledEvents"
-```
-
-#### 4. Permission Issues
-
-```powershell
-# Test service account permissions
-runas /user:AzureEventsService "powershell.exe -Command Get-Location"
-
-# Check file permissions
-Get-Acl "C:\AzureEvents\scenarios\scenario3_automated_handling\config.json" | Format-List
-
-# Test network access as service account
-runas /user:AzureEventsService "powershell.exe -Command Test-NetConnection -ComputerName 169.254.169.254 -Port 80"
-```
-
 ### Debug Mode
 
 Enable detailed debugging:
@@ -342,36 +268,6 @@ $DebugPreference = "Continue"
 .\windows_monitor.ps1 -Verbose -Debug
 ```
 
-### Resource Usage Monitoring
-
-Monitor resource usage:
-
-```powershell
-# Monitor CPU and memory usage
-Get-Counter "\Process(powershell*)\% Processor Time"
-Get-Counter "\Process(powershell*)\Working Set - Private"
-
-# Monitor network connections
-Get-NetTCPConnection -OwningProcess (Get-Process powershell).Id
-
-# Check disk I/O
-Get-Counter "\PhysicalDisk(_Total)\Disk Reads/sec"
-Get-Counter "\PhysicalDisk(_Total)\Disk Writes/sec"
-```
-
-## Deployment Validation
-
-### Pre-Production Checklist
-
-- [ ] PowerShell version verified (5.1+)
-- [ ] IMDS connectivity tested
-- [ ] Configuration files secured
-- [ ] Service account created and configured
-- [ ] Windows Service or Scheduled Task configured
-- [ ] Logging configured (Event Log + Files)
-- [ ] Windows Firewall rules configured
-- [ ] Execution policy set appropriately
-
 ### Production Deployment
 
 ```powershell
@@ -384,7 +280,4 @@ Get-Counter "\PhysicalDisk(_Total)\Disk Writes/sec"
 # 3. Verify operation
 Get-Service "AzureScheduledEvents"
 Get-EventLog -LogName Application -Source "AzureScheduledEvents" -Newest 5
-
-# 4. Set up monitoring
-# Add health checks to your monitoring system
 ```

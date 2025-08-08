@@ -82,7 +82,9 @@ Each scheduled event contains:
 ### Reboot Events
 
 **Cause**: Host OS updates, security patches, hardware maintenance
+
 **Duration**: Usually 1-5 minutes
+
 **Application Response**:
 
 - Graceful application shutdown
@@ -93,7 +95,9 @@ Each scheduled event contains:
 ### Redeploy Events  
 
 **Cause**: VM migration to different hardware
+
 **Duration**: Several minutes
+
 **Application Response**:
 
 - Backup critical data
@@ -104,7 +108,9 @@ Each scheduled event contains:
 ### Preempt Events
 
 **Cause**: Spot VM eviction due to capacity needs
+
 **Duration**: Very short notice (30 seconds typical)
+
 **Application Response**:
 
 - Quick save of work in progress
@@ -115,7 +121,9 @@ Each scheduled event contains:
 ### Freeze Events
 
 **Cause**: Live migration or snapshot operations
+
 **Duration**: Usually seconds
+
 **Application Response**:
 
 - Usually no action needed
@@ -234,26 +242,6 @@ POST to IMDS endpoint with:
 - **Dry-Run Mode**: Test without making actual changes
 - **Planned Maintenance**: Use scheduled maintenance windows
 - **Monitoring**: Verify automation during real events
-
-## Related Azure Services
-
-### Azure Maintenance Configurations
-
-- Schedule maintenance windows
-- Control update timing
-- Coordinate across VM groups
-
-### Azure Monitor
-
-- Collect scheduled event metrics
-- Alert on automation failures
-- Dashboard visualization
-
-### Azure Resource Health
-
-- Monitor VM health status
-- Correlate with scheduled events
-- Historical event tracking
 
 ## References
 

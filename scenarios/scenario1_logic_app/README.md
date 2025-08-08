@@ -119,19 +119,3 @@ The JSON payload sent to the Logic App includes:
   "actionRequired": "Review events and coordinate maintenance window"
 }
 ```
-
-## Monitoring
-
-The scripts will output status information:
-
-- Event detection and details
-- HTTP request details (for debugging)
-- Success/failure of Logic App notifications
-- Polling status and timing
-
-## Troubleshooting
-
-1. **No events detected**: This is normal - Azure only populates scheduled events when maintenance is actually scheduled
-2. **HTTP errors**: Verify your Logic App URL and that the trigger accepts POST requests
-3. **Permission errors**: Ensure the VM has access to the IMDS endpoint (169.254.169.254)
-4. **Timeout errors**: The IMDS service may be temporarily unavailable; the script will retry on the next poll
