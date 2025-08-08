@@ -1,0 +1,16 @@
+{
+  "automation": {
+    "dry_run": true,
+    "_comment_dry_run": "Set to false to enable actual drain operations"
+  },
+  "servicenow": {
+    "instance_url": "https://your-instance.service-now.com",
+    "username": "your-username", 
+    "password": "your-password",
+    "auth_type": "basic",
+    "assignment_group": "Infrastructure Team",
+    "caller_id": "automation.user",
+    "vm_identifier": "your-vm-name"
+  },
+  "_comment": "ServiceNow configuration is optional for this scenario. Remove the servicenow section to skip automation record creation."
+}
