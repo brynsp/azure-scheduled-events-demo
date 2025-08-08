@@ -285,7 +285,7 @@ def main():
         if "automation" not in config:
             config["automation"] = {}
         config["automation"]["dry_run"] = True
-        print("🧪 Running in DRY-RUN mode - no actual changes will be made")
+        print("  Running in DRY-RUN mode - no actual changes will be made")
 
     # Validate automation configuration (optional)
     if "automation" in config:
