@@ -15,29 +15,29 @@ Azure Scheduled Events is a metadata service that provides advance notification 
 ```text
 ├── scenarios/
 │   ├── scenario1_logic_app/          # Logic App alerting scenario
-│   │   ├── linux_monitor.py          # Python implementation
-│   │   ├── windows_monitor.ps1       # PowerShell implementation  
-│   │   ├── config.json.example       # Configuration template
-│   │   └── README.md                 # Scenario documentation
+│   │   ├── linux_monitor.py
+│   │   ├── windows_monitor.ps1
+│   │   ├── config.json.example
+│   │   └── README.md
 │   ├── scenario2_servicenow_direct/  # ServiceNow direct integration
-│   │   ├── linux_monitor.py          # Python implementation
-│   │   ├── windows_monitor.ps1       # PowerShell implementation
-│   │   ├── config.json.example       # Configuration template
-│   │   └── README.md                 # Scenario documentation
+│   │   ├── linux_monitor.py
+│   │   ├── windows_monitor.ps1
+│   │   ├── config.json.example
+│   │   └── README.md
 │   └── scenario3_automated_handling/ # Automated handling scenario
-│       ├── linux_monitor.py          # Python implementation
-│       ├── windows_monitor.ps1       # PowerShell implementation
-│       ├── drain_hooks.py            # Sample drain hook implementations
-│       ├── config.json.example       # Configuration template
-│       └── README.md                 # Scenario documentation
+│       ├── linux_monitor.py
+│       ├── windows_monitor.ps1
+│       ├── drain_hooks.py
+│       ├── config.json.example
+│       └── README.md
 ├── common/
 │   ├── imds_client.py                # Shared IMDS client library
 │   └── utils.py                      # Common utility functions
 ├── docs/
-│   ├── azure_scheduled_events_overview.md  # Azure service overview
-│   ├── setup_linux.md               # Linux deployment guide
-│   └── setup_windows.md             # Windows deployment guide
-└── README.md                        # This file
+│   ├── azure_scheduled_events_overview.md
+│   ├── setup_linux.md
+│   └── setup_windows.md
+└── README.md
 ```
 
 ## Scenarios
