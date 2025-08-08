@@ -287,39 +287,6 @@ ServiceNow automation record INC0010001 created
 Automation completed successfully! Impact window shortened.
 ```
 
-## Advanced Usage
-
-### Production Deployment
-
-```bash
-# Linux systemd service
-sudo systemctl enable azure-scheduled-events
-sudo systemctl start azure-scheduled-events
-
-# Windows service with NSSM
-nssm install "AzureScheduledEvents" "powershell.exe"
-nssm start "AzureScheduledEvents"
-```
-
-### Custom Drain Hooks
-
-```python
-# Replace stubs in drain_hooks.py with actual logic
-def prepare_for_reboot(self, event):
-    # 1. Gracefully stop applications
-    # 2. Flush application caches
-    # 3. Remove from load balancer  
-    # 4. Sync database transactions
-    return True, "Applications prepared for reboot"
-```
-
-## Getting Help
-
-1. Check scenario README for specific guidance
-2. Review setup guides for your platform
-3. Enable debug logging for detailed troubleshooting
-4. Test with dry-run modes before production deployment
-
 ## Contributing
 
 This repository demonstrates Azure Scheduled Events handling patterns. To extend or customize:
@@ -333,7 +300,6 @@ This repository demonstrates Azure Scheduled Events handling patterns. To extend
 
 - Configuration files contain credentials - secure appropriately
 - Service accounts should have minimal required permissions  
-- Network access to IMDS is required (169.254.169.254)
 - External integrations should use secure authentication methods
 
 ## Support & Reuse Expectations
