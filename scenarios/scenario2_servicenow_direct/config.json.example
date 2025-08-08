@@ -1,0 +1,12 @@
+{
+  "servicenow": {
+    "instance_url": "https://your-instance.service-now.com",
+    "username": "your-username",
+    "password": "your-password",
+    "auth_type": "basic",
+    "assignment_group": "Infrastructure Team",
+    "caller_id": "system.admin", 
+    "vm_identifier": "your-vm-name"
+  },
+  "_comment": "Replace the values above with your actual ServiceNow instance details. For production use, consider OAuth2 authentication instead of basic auth."
+}

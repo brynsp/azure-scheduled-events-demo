@@ -1,0 +1,4 @@
+{
+  "logic_app_url": "https://your-logic-app.azurewebsites.net/api/your-http-trigger-url",
+  "_comment": "Replace the URL above with your actual Azure Logic App HTTP trigger URL"
+}
