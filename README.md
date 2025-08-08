@@ -1,6 +1,6 @@
 # Azure Scheduled Events Demo
 
-A comprehensive demonstration of Azure Scheduled Events handling across three scenarios, supporting both Linux and Windows VMs. This demo prioritizes readability and clear documentation to showcase different approaches to handling Azure maintenance events.
+A comprehensive demonstration of Azure Scheduled Events handling across three scenarios, supporting both Linux and Windows VMs.
 
 ## Overview
 
