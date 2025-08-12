@@ -90,7 +90,7 @@ Value: Minimizes human intervention and service impact duration
 
 ```bash
 # Clone the repository
-git clone https://github.com/brynsp/azure-scheduled-events-demo.git
+git clone https://github.com/<your_username>/azure-scheduled-events-demo.git
 cd azure-scheduled-events-demo
 
 # Navigate to your preferred scenario
@@ -153,6 +153,7 @@ python linux_monitor.py
 
 ### Scenario 2: ServiceNow  
 
+> This is an basic example connecting to ServiceNow. In a real-world use case do not store credentials in repositories. OAuth2 is a much more production ready implementation, but is outside the scope of this demo.
 ```json
 {
   "servicenow": {
